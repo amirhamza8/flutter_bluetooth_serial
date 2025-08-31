@@ -1,38 +1,54 @@
-plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android") version "1.9.25"
+// flutter_bluetooth_serial/android/build.gradle
+
+buildscript {
+    ext.kotlin_version = "1.9.25"
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
 }
 
-group = "io.github.edufolly.flutterbluetoothserial"
-version = "1.0-SNAPSHOT"
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+group = 'io.github.edufolly.flutterbluetoothserial'
+version = '1.0-SNAPSHOT'
 
 android {
-    namespace = "io.github.edufolly.flutterbluetoothserial"
-    compileSdk = 35
-    buildToolsVersion = "35.0.0"
+    namespace 'io.github.edufolly.flutterbluetoothserial'
+    compileSdkVersion 35
+    buildToolsVersion "35.0.0"
 
     defaultConfig {
-        minSdk = 21
-        targetSdk = 35
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
+        minSdkVersion 21
+        targetSdkVersion 35
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     kotlinOptions {
         jvmTarget = "11"
     }
 
-    lint {
-        disable += setOf("InvalidPackage")
+    lintOptions {
+        disable 'InvalidPackage'
     }
 }
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 dependencies {
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.annotation:annotation:1.7.1")
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.annotation:annotation:1.7.1"
 }
